@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="airguard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="icon" href="slike/shield.png" type="image/png">
+    <title>AirGuard</title>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <header>
+            <nav class="navbar">
+                <div class="shield-icon">
+                    <img src="slike/shield.png" alt="Shield Icon">
+                    <span id="tekst-ikonice">AirGuard</span>
+                </div>
+                <ul class="navbar-links">
+                    <li><a href="file:///C:/Users/Dule/Desktop/AirGuard/airguard.html">Početna stranica</a></li>
+                </ul>
+            </nav>
+        </header>
+    </header>
+    <div id="map"></div>
+    <!-- Legenda za kvalitet vazduha -->
+<table class="legend-table">
+    <tr>
+        <td><div class="kruzici"><img src="slike/zelenikrug.png" alt="Green Circle"></div></td>
+        <td><span>Zeleni krug - parametar za <span class="green-text">PERFEKTAN</span> kvalitet vazduha</span></td>
+    </tr>
+    <tr>
+        <td><div class="kruzici"><img src="slike/zutikrug.png" alt="Yellow Circle"></div></td>
+        <td><span>Žuti krug - parametar za <span class="yellow-text">UPITAN</span> kvalitet vazduha</span></td>
+    </tr>
+    <tr>
+        <td><div class="kruzici"><img src="slike/crvenikrug.png" alt="Red Circle"></div></td>
+        <td><span>Crveni krug - parametar za <span class="red-text">KRITIČAN</span> kvalitet vazduha</span></td>
+    </tr>
+</table>
+    <!--Sekcija za podatke kvaliteta vazduha -->
+<div id="chartContainer" style="width: 80%; margin: 20px auto;">
+    <canvas id="airQualityChart"></canvas>
+</div>
+    <script src="airguard.js">
+    </script>
+</body>
+</html>

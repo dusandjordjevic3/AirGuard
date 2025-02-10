@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="airguard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="icon" href="slike/shield.png" type="image/png">
+    <title>AirGuard</title>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <header>
+            <nav class="navbar">
+                <div class="shield-icon">
+                    <img src="slike/shield.png" alt="Shield Icon">
+                    <span id="tekst-ikonice">AirGuard</span>
+                </div>
+                <ul class="navbar-links">
+                    <li><a href="file:///C:/Users/Dule/Desktop/AirGuard/airguard.html">Početna stranica</a></li>
+                </ul>
+            </nav>
+        </header>
+        </header>
+        <center>
+        <h2>Proverite svoje znanje pomoću našeg kviza!</h2>
+        </center><br>
+
+        <div class="quiz-container">
+            <form id="quiz-form">
+                <div class="question" id="question-1">
+                    <p>1. U kom gradu je najzagađeniji vazduh u Srbiji?</p>
+                    <div class="answers">
+                        <label for="a1">
+                        <input type="radio" id="a1" name="q1" value="a">Valjevo</label>
+                        <label for="b1">
+                        <input type="radio" id="b1" name="q1" value="b">Niš</label>
+                        <label for="c1">
+                        <input type="radio" id="c1" name="q1" value="c">Pirot</label>
+                    </div>
+                    <button type="button" class="dugme" onclick="nextQuestion(1)">Sledeće pitanje</button>
+                </div>
+        
+                <div class="question hidden" id="question-2">
+                    <p>2. Koji grad ima najčistiji vazduh na svetu?</p>
+                    <div class="answers">
+                        <label for="a2">
+                        <input type="radio" id="a2" name="q2" value="a">Rejkjavik</label>
+                        <label for="b2">
+                        <input type="radio" id="b2" name="q2" value="b">Geteborg</label>
+                        <label for="c2">
+                        <input type="radio" id="c2" name="q2" value="c">Minsk</label>
+                    </div>
+                    <button type="button" class="dugme" onclick="nextQuestion(2)">Sledeće pitanje</button>
+                </div>
+        
+                <div class="question hidden" id="question-3">
+                    <p>3. Tačno ili netačno: Posađivanje većeg broja drveća i zelenila bi rešila veliki deo zagađenosti vazduha?</p>
+                    <div class="answers" id="question-3">
+                        <label for="a3">
+                        <input type="radio" id="a3" name="q3" value="a">Tačno</label>
+                        <label for="b3">
+                        <input type="radio" id="b3" name="q3" value="b">Netačno</label>
+                    </div>
+                    <button type="button" class="dugme" onclick="nextQuestion(3)">Sledeće pitanje</button>
+                </div>
+        
+                <div class="question hidden" id="question-4">
+                    <p>4. Koji od sledećih gasova se najviše nalazi u vazduhu?</p>
+                    <div class="answers">
+                        <label for="a4">
+                        <input type="radio" id="a4" name="q4" value="a">Kiseonik</label>
+                        <label for="b4">
+                        <input type="radio" id="b4" name="q4" value="b">Argon</label>
+                        <label for="c4">
+                        <input type="radio" id="c4" name="q4" value="c">Azot</label>
+                    </div>
+                    <button type="button" class="dugme" onclick="nextQuestion(4)">Sledeće pitanje</button>
+                </div>
+
+                <div class="question hidden" id="question-5">
+                    <p>5. Ko je glavni krivac zagađenja vazduha?</p>
+                    <div class="answers">
+                        <label for="a5">
+                        <input type="radio" id="a5" name="q5" value="a">Saobraćaj</label>
+                        <label for="b5">
+                        <input type="radio" id="b5" name="q5" value="b">Klima</label>
+                        <label for="c5">
+                        <input type="radio" id="c5" name="q5" value="c">Industrija</label>
+                    </div>
+                    <button type="button" class="dugme" onclick="nextQuestion(5)">Završi kviz i prikaži rezultat</button>
+                </div>
+            </form>
+        
+            <!-- Sekcija za rezultate -->
+        <div id="results" class="hidden"></div>
+
+        <!-- Objasnjenja rezultata -->
+        <div id="answer-explanations" class="hidden">
+            <div class="answer-explanation" id="explanation-1">
+                <p><strong>1. U kom gradu je najzagađeniji vazduh u Srbiji?</strong></p>
+                <p class="correct">Odgovor: <strong>Valjevo</strong></p>
+                <p>Valjevo je najzagađeniji grad u Srbiji. 15.og januara 2024.godine izmerena je PM 2,5 čestica od 348 µg/m, što je pozicioniralo Valjevo
+                    kao najzagađeniji grad na svetu u tom trenutku!
+                </p>
+            </div>
+            <div class="answer-explanation" id="explanation-2">
+                <p><strong>2. Koji grad ima najčistiji vazduh na svetu?</strong></p>
+                <p class="correct">Odgovor: <strong>Rejkjavik</strong></p>
+                <p>Glavni grad Islanda važi za grad sa najčistijim vazduhom na svetu, i spada jedan od najozelenjenijih gradova sveta!</p>
+            </div>
+            <div class="answer-explanation" id="explanation-3">
+                <p><strong>3. Tačno ili netačno: Posađivanje većeg broja drveća i zelenila bi rešila veliki deo zagađenosti vazduha?</strong></p>
+                <p class="correct">Odgovor: <strong>Tačno</strong></p>
+                <p>Zaštita od vrućina, čistiji vazduh, bolje disanje, zdraviji san, ublažavanje stresa, prevencija jednog broja bolesti i odbrana od depresije - drveće i zelenilo nude niz zdravstvenih prednosti.</p>
+            </div>
+            <div class="answer-explanation" id="explanation-4">
+                <p><strong>4. Koji od sledećih gasova se najviše nalazi u vazduhu?</strong></p>
+                <p class="correct">Odgovor: <strong>Azot</strong></p>
+                <p>Oko 78% vazduha čini azot, 21% čini kiseonik, dok argon samo 0.93%.</p>
+            </div>
+            <div class="answer-explanation" id="explanation-5">
+                <p><strong>5. Ko je glavni krivac zagađenja vazduha?</strong></p>
+                <p class="correct">Odgovor: <strong>Saobraćaj</strong></p>
+                <p>Drumski, kao avio i vodeni saobraćaj su glavni krivci za zagađenje vazduha jer su glavni izvori ispuštanja ugljen-dioksida (CO₂)!</p>
+            </div>
+            <br>
+            <center>
+            <button class="glow-button red small"><a href="file:///C:/Users/Dule/Desktop/AirGuard/kvalitet_vazduha.html">Pokušajte ponovo</a></button>
+            </center>
+        </div>
+        
+        <script>
+            // Funkcija kako se prikazuje sledece pitanje
+            function nextQuestion(questionNumber) {
+                // sakrij trenutno pitanje
+                document.getElementById("question-" + questionNumber).classList.add("hidden");
+                
+                // prikazi sledece pitanje
+                if (questionNumber < 5) {
+                    document.getElementById("question-" + (questionNumber + 1)).classList.remove("hidden");
+                } else {
+                    // poslednje pitanje, procesuiraj rezultate
+                    showResults();
+                }
+            }
+        
+            // Funkcija za racunanje i prikaz rezultata
+            function showResults() {
+                let score = 0;
+                let totalQuestions = 5;
+                
+                // proveri rezultate
+                if (document.getElementById("a1").checked) score++;
+                if (document.getElementById("a2").checked) score++;
+                if (document.getElementById("a3").checked) score++;
+                if (document.getElementById("c4").checked) score++;
+                if (document.getElementById("a5").checked) score++;
+                
+                // prikazi rezultate
+                const resultsDiv = document.getElementById("results");
+                resultsDiv.classList.remove("hidden");
+                resultsDiv.innerHTML = `Osvojili ste ${score} od mogućih ${totalQuestions} boda!`;
+
+                // prikazi objasnjenja rezultata
+        document.getElementById("answer-explanations").classList.remove("hidden");
+            }
+        </script>
+
+</body>
+</html>

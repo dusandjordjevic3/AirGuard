@@ -1,0 +1,814 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-image: url('slike/sky-uspcaled-9-16.png'); /* Putanja do slike */
+    background-size: cover;   /* Slika se prilagođava širini i visini ekrana */
+    background-position: center center;  /* Slika će biti centrirana */
+    background-attachment: scroll; /* Slika ostaje fiksirana dok se stranica pomera */
+    background-repeat: no-repeat; /* Slika se neće ponavljati */
+    min-height: 100vh;  /* Osigurava da pokriva celu visinu ekrana */
+    color: #ffffff; /* Postavljanje boje teksta na belo, da bi bio čitljiv na tamnoj pozadini */
+}
+
+
+.heading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+h1, h2 {
+    letter-spacing: 5px;
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    animation: letterAppear 1s ease forwards;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-top: 50px; 
+}
+
+@keyframes letterAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px); /* kreni od leve strane */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* konacna pozicija */
+    }
+}
+
+/* animacija svakog slova unutar hedinga */
+.animated-heading span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateX(-30px);
+    animation: letterAppear 1s ease forwards;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent !important;
+    box-shadow: none !important; 
+    position: absolute; 
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* osigurava da je na vrh ostalih elemenata */
+}
+
+.navbar * {
+    background-color: transparent !important; 
+    box-shadow: none;
+}
+
+/* iskljucivo za linkove ili logo u navbaru */
+.navbar a, .navbar .shield-icon, .navbar .navbar-links {
+    background-color: transparent !important;
+}
+
+.shield-icon {
+    display: flex;  
+    align-items: center;  
+}
+
+.shield-icon span {
+    font-size: 1.5rem;  
+    font-weight: bold;  
+    color: white;  
+}
+
+/* stit ikona stilizacija */
+.shield-icon img {
+    width: 40px;  
+    height: auto; 
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-links li {
+    margin-left: 20px;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* hover efekat za link */
+.navbar-links a:hover {
+    color: #c5e0fe;  
+}
+
+.glow-button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid transparent;
+    border-radius: 20px;  
+    background-color: #3f7af8; 
+    color: white;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    align-items: center;
+    display: inline-block; 
+    text-align: center;
+}
+
+/* Efekat sjaja */
+.glow-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #3f7af8;  /* Glowing color */
+    border-radius: 50%;
+    transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* tekst ostaje na vrhu sjaja */
+.glow-button a {
+    color: white;         
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hover efekat, povecaj dugme i neka svetli */
+.glow-button:hover {
+    transform: scale(1.2);  
+    box-shadow: 0 6px 15px rgb(215, 236, 255);
+}
+
+.glow-button:hover::before {
+    width: 500%;
+    height: 500%;
+    top: -150%;
+    left: -150%;  
+}
+
+/* Varijacije boja */
+.glow-button.blue::before {
+    background-color: #00c11d; 
+}
+
+.glow-button.green::before {
+    background-color: #e85e5e; 
+}
+
+.glow-button.red::before {
+    background-color: #3688f4; 
+}
+
+.glow-button.yellow::before {
+    background-color: #f99508; 
+}
+
+/* trenutni */
+.glow-button.blue {
+    background-color: #00c11d; 
+}
+
+.glow-button.green {
+    background-color: #e85e5e; 
+}
+
+.glow-button.red {
+    background-color: #3688f4; 
+}
+
+.glow-button.yellow {
+    background-color: #f99508; 
+}
+
+.glow-button.red.small::before {
+    background-color: #3c8cf5; 
+    height: 100px;
+    width: 200px;
+}
+
+.glow-button.red.small {
+    background-color: #0058ca; 
+    height: 100px;
+    width: 200px;
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+}
+
+/* stilizacija liste */
+ul {
+    display: flex;  
+    justify-content: center;  
+    padding: 0;
+    list-style-type: none; 
+}
+
+/* stilizacija za svaki element liste u kontenjeru */
+.ikone-liste {
+    display: inline-block;  
+    text-align: center;  
+    margin: 10px;  
+    width: 50px;  
+    height: 50px; 
+    font-size: 1rem;  
+    line-height: 20px; 
+}
+
+.ikone-liste img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+}
+
+.subtext {
+    display: block;  
+    margin-top: 10px;  
+    font-size: 1rem;  
+    color: #ffffff;  
+    width: 70%;  
+    margin-left: auto;  
+    margin-right: auto;  
+    text-align: center;  
+    white-space: normal;  
+    font-weight:bold;
+}
+
+/* stilizacija kontenjera */
+.gallery-container {
+    width: 100%;
+    max-width: 1600px;  
+    margin: 0 auto;     
+    padding: 20px;
+}
+
+.image-list {
+    list-style-type: none;  
+    padding: 0;             
+    margin: 0;              
+    display: flex;          
+    flex-wrap: wrap;        
+    justify-content: center; 
+}
+
+.image-item {
+    margin: 10px;    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-item img {
+    width: 100%;            
+    max-width: 250px;       
+    height: auto;           
+    display: block;         
+    margin: 0 auto;         
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+}
+
+.image-item:hover img {
+    transform: scale(1.1);  
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); 
+}
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(78, 180, 252);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease, filter 0.3s ease; 
+  }
+
+  .image img:hover {
+    transform: scale(1.05); 
+    filter: brightness(1.07); 
+  }
+  
+  .text {
+    width: 100%; 
+    padding-top: 20px; 
+    text-align: center; 
+  }
+  
+  .text p, .text ul {
+    font-size: 1rem;
+  }
+
+  table {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px;
+    border-collapse: collapse;
+    background-color:rgb(78, 180, 252);
+  }
+
+  caption {
+    font-size: 2rem; 
+    font-weight: bold; 
+    margin-bottom: 15px; 
+    margin-top: 15px;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  th {
+    background-color: #f2f2f200;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f900;
+  }
+  
+  .slikekrugovi {
+    width: 50px; 
+    height: auto; 
+  }
+
+.contact-form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#kontaktnaslov {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4183f6;
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4183f6;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #005eff;
+}
+
+header {
+    background-color: transparent;
+    padding: 15px 0;
+    box-shadow: none;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+}
+
+#map {
+    height: 500px;
+    width:auto;
+    margin-bottom: 20px;
+}
+
+#airQualityChart {
+    width: 100%;  /* responzivnost grafikona */
+    height: 400px; /* podesena visina na 400px */
+}
+
+#airQualityData {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.legend-table {
+    width: 600px; 
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse; 
+    font-size: 16px; 
+}
+
+.legend-table td {
+    text-align: center; 
+    vertical-align: middle; 
+    padding: 10px; 
+}
+
+.kruzici img {
+    width: 20px; 
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px; 
+    margin-left: 10px;
+}
+
+.green-text {
+    color: rgb(19, 140, 19); 
+    -webkit-text-stroke: 0.3px rgb(0, 0, 0); 
+}
+
+.yellow-text {
+    color: rgb(253, 239, 53); 
+    -webkit-text-stroke: 0.3px rgb(0, 0, 0); 
+}
+
+.red-text {
+    color: rgb(231, 83, 83); 
+    -webkit-text-stroke: 0.3px rgb(0, 0, 0); 
+}
+
+.quiz-container {
+    background-color: rgb(142, 204, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 30px auto;
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.question {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: center;
+    
+}
+
+.answers {
+    display: flex;        
+    flex-direction: row;  
+    align-items: center;  
+    justify-content: center;
+    margin-top:10px;
+    gap: 20px;
+}
+
+.answers input[type="radio"] {
+    margin-right: none;  
+}
+
+.answers label {
+    font-size: 18px;         
+    display: inline-flex;    
+    align-items:center;     
+    cursor: pointer;        
+    margin-bottom: 0px;     
+    margin-top: 5px;
+}
+
+.answers input[type="radio"]:hover {
+    border-color: #79c1ff;   
+}
+
+.answers input[type="radio"]:checked {
+    background-color: #33aaff; 
+    border-color: #2fb2fe;     
+}
+
+.dugme {
+    display: block;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center; 
+}
+.dugme:hover {
+    background-color: #2980b9;
+}
+
+#results {
+    display: flex;           
+    justify-content: center; 
+    align-items: center;     
+    font-size: 1.5em;
+    margin-top: none;
+    color: #ffffff;          
+    text-align: center;      
+}
+
+.hidden {
+    display: none;
+}
+
+.answer-explanation {
+    margin-top: 20px;
+    background-color: #50c4fe;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.answer-explanation p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.correct {
+    color: rgb(0, 129, 0);
+    
+}
+
+.incorrect {
+    color: red;
+}
+
+input[type="radio"] {
+    width: 30px; 
+    height: 30px; 
+    margin: 10px;
+    cursor: pointer;
+    appearance: none;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 50%; 
+    position: relative;
+}
+
+/* kada je selektovano, odaberi boju pozadine i stavi stiklicu */
+input[type="radio"]:checked {
+    background-color: #33aaff; 
+    border: 2px solid #2fb2fe;
+}
+
+input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 10px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+label {
+    font-size: 18px; 
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+input[type="radio"]:hover {
+    border-color: #27ae60;
+}
+  
+.hidden {
+    display: none;
+}
+
+#successMessage {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #22c247;
+    color: #ffffff;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    font-weight:bolder;
+}
+
+/* za ekrane od 768px ili manje (tablete, telefone...) */
+@media (max-width: 768px) {
+
+    h1, h2 {
+        letter-spacing: 5px;
+        display: inline-block;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0;
+        animation: letterAppear 1s ease forwards;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        margin-top: 30px; 
+        margin-left:10px;
+        margin-right: 10px;
+    }
+
+    .center-div {
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom:15px;
+    }
+
+    .center-div-explanationmap {
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom:15px;
+        gap: 10px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    h1, h2 {
+        letter-spacing: 5px;
+        display: inline-block;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0;
+        animation: letterAppear 1s ease forwards;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        margin-top: 30px; 
+    }
+
+    .answers {
+        font-size: 1em;         
+        display: flex;
+        justify-content: center ;
+        gap: 20px;
+    }
+
+    .answers label {
+        display: flex;
+        flex-direction: column;
+        font-size: 1em;         
+    }
+
+    .question {
+        font-size: 1em;
+        margin-bottom: 15px;
+        text-align: center;    
+    }
+
+    .dugme {
+        display: block;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-top: 20px;
+        text-align: center; 
+    }
+
+    .dugme:hover {
+        background-color: #2980b9;
+    }
+
+    .center-div {
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom:15px;
+    }
+
+    .center-div-explanationmap {
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom:15px;
+        gap: 10px;
+    }
+
+    .contact-form-container {
+        width: 90%;
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-top: 70px;
+    }
+    
+    #kontaktnaslov {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+        margin-top:10px;
+    }
+
+    .legend-table {
+        width: 300px; 
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse; 
+        font-size: 15px; 
+    }
+    
+    .legend-table td {
+        text-align: left; 
+        vertical-align: middle; 
+        padding: 10px; 
+    }
+
+}

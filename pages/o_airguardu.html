@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="airguard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <link rel="icon" href="slike/shield.png" type="image/png">
+    <title>AirGuard</title>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <header>
+            <nav class="navbar">
+                <div class="shield-icon">
+                    <img src="slike/shield.png" alt="Shield Icon">
+                    <span id="tekst-ikonice">AirGuard</span>
+                </div>
+                <ul class="navbar-links">
+                    <li><a href="file:///C:/Users/Dule/Desktop/AirGuard/airguard.html">Početna stranica</a></li>
+                </ul>
+            </nav>
+        </header>
+        <center>
+            <h1>AirGuard detaljno uputstvo</h1><br>
+        </center>
+    </header>
+    <center>
+    <h2 id="sekcija">Sekcije:</h2>
+    <div class="gallery-container">
+        <ul class="image-list">
+            <li class="image-item">
+                <img src="slike/uputstvo.png" alt="Image 1">
+                <span class="subtext">Dobrodošli! Trenutno se nalazimo u ovoj sekciji! Ovde možete naći sva objašnjenja u vezi ove aplikacije. Od objašnjenja sekcija,
+                     do toga kako i šta radi. Ova aplikacija je jednostavna i korisnički orijentisana, kao i prilagođena da svako može da je koristi!</span>
+            </li>
+            <li class="image-item">
+                <img src="slike/mapa.png" alt="Image 2">
+                <span class="subtext">U sekciji interaktivne mape možete dobiti jasne podatke o tome gde, i koliko je kvalitetan vazduh u nekoj oblasti. Šta to podrazumeva?
+                     Znači da možete kliknuti bilo gde na mapi, i videćete parametre koji će Vam približiti stanje vazduha u tom gradu, selu ili naselju! Više informacija pri dnu sajta!</span>
+            </li>
+            <li class="image-item">
+                <img src="slike/vazduh.png" alt="Image 3">
+                <span class="subtext">Oprobajte se u našem kratkom i informativnom kvizu vezanom za vazduh! Kviz je zabavnog i edukativnog karaktera, tako da 
+                  slobodno pokušajte da rešite niz kratkih pitanja koje smo pripremili, nećete se pokajati!
+                </span>
+            </li>
+            <li class="image-item">
+                <img src="slike/kontakt.png" alt="Image 4">
+                <span class="subtext">Ukoliko imate bilo kakve nedoumice, bez ikakvog ustručavanja nam pošaljite pitanje i mi ćemo odgovoriti u što kraćem roku! Potrebno je samo
+                    da ispunite sve podatke u formi, i pošaljete je, ostalo prepustite nama!
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <h2>Kako funkcioniše naša interaktivna mapa?</h2>
+    <div class="container">
+        <div class="image">
+          <img src="slike/objasnjenje.png" alt="Example Image">
+        </div>
+        <div class="text">
+          <h3>Mapa funkcioniše na jednostavan način, samo pratite sledeće korake:</h3><br>
+          <ul class="center-div-explanationmap">
+            <li>Korak 1:<br> Uđete na sekciju interaktivna mapa, kao što je gore objašnjeno.</li>
+            <li>Korak 2:<br> Kliknete bilo koji grad, selo, oblast za koju želite da proverite kvalitet vazduha.</li>
+            <li>Korak 3:<br> Zatim će Vam se prikazati parametri koji su releventni za tu oblast.</li>
+            <li>Korak 4:<br> U zavisnosti od toga koje je boje krug, znaćete kakav je kvalitet tog vazduha.</li>
+          </ul>
+        </div>
+      </div>
+      <table>
+        <caption>Objašnjenje parametara</caption>
+        <thead>
+            <tr>
+              <th>Oznake</th>
+              <th>Značenje oznaka</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr>
+            <td>PM2.5</td>
+            <td>Čestice sa prečnikom manjim od 2.5 mikrometara koje mogu da prodru u pluća i izazovu zdravstvene probleme.
+          </tr>
+          <tr>
+            <td>PM10</td>
+            <td>Čestice sa prečnikom manjim od 10 mikrometara koje mogu da utiču na respiratorni sistem.
+            </td>
+          </tr>
+          <tr>
+            <td>NO2</td>
+            <td>Azotni dioksid, gas koji nastaje sagorevanjem fosilnih goriva i može izazvati probleme sa disanjem.
+            </td>
+          </tr>
+          <tr>
+            <td>SO2</td>
+            <td>Sumporni dioksid, gas koji nastaje sagorevanjem uglja i nafte i može izazvati iritaciju respiratornog sistema.
+            </td>
+          </tr>
+          <tr>
+            <td>CO</td>
+            <td>Ugljen-monoksid, bezbojan gas koji nastaje sagorevanjem goriva i može izazvati trovanje.
+            </td>
+          </tr>
+          <tr>
+            <td>O3</td>
+            <td>Ozon, gas koji u visokom sloju atmosfere štiti od UV zračenja, dok u prizemnim slojevima može izazvati respiratorne probleme.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+
+    <script src="airguard.js"></script>
+</body>
+</html>

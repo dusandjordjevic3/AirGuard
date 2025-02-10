@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url('slike/sky-uspcaled-9-16.png'); /* Putanja do slike */
+    background-image: url('../images/sky-uspcaled-9-16.png'); /* Putanja do slike */
     background-size: cover;   /* Slika se prilagođava širini i visini ekrana */
     background-position: center center;  /* Slika će biti centrirana */
     background-attachment: scroll; /* Slika ostaje fiksirana dok se stranica pomera */

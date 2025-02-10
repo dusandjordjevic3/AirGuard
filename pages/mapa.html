@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="airguard.css">
+    <link rel="stylesheet" href="../style/airguard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="icon" href="slike/shield.png" type="image/png">
+    <script src="../scripts/airguard.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="icon" href="../images/shield.png" type="image/png">
     <title>AirGuard</title>
 </head>
 <body>
@@ -15,11 +16,11 @@
         <header>
             <nav class="navbar">
                 <div class="shield-icon">
-                    <img src="slike/shield.png" alt="Shield Icon">
+                    <img src="../images/shield.png" alt="Shield Icon">
                     <span id="tekst-ikonice">AirGuard</span>
                 </div>
                 <ul class="navbar-links">
-                    <li><a href="file:///C:/Users/Dule/Desktop/AirGuard/airguard.html">Početna stranica</a></li>
+                    <li><a href="../index.html">Početna stranica</a></li>
                 </ul>
             </nav>
         </header>
@@ -28,15 +29,15 @@
     <!-- Legenda za kvalitet vazduha -->
 <table class="legend-table">
     <tr>
-        <td><div class="kruzici"><img src="slike/zelenikrug.png" alt="Green Circle"></div></td>
+        <td><div class="kruzici"><img src="../images/zelenikrug.png" alt="Green Circle"></div></td>
         <td><span>Zeleni krug - parametar za <span class="green-text">PERFEKTAN</span> kvalitet vazduha</span></td>
     </tr>
     <tr>
-        <td><div class="kruzici"><img src="slike/zutikrug.png" alt="Yellow Circle"></div></td>
+        <td><div class="kruzici"><img src="../images/zutikrug.png" alt="Yellow Circle"></div></td>
         <td><span>Žuti krug - parametar za <span class="yellow-text">UPITAN</span> kvalitet vazduha</span></td>
     </tr>
     <tr>
-        <td><div class="kruzici"><img src="slike/crvenikrug.png" alt="Red Circle"></div></td>
+        <td><div class="kruzici"><img src="../images/crvenikrug.png" alt="Red Circle"></div></td>
         <td><span>Crveni krug - parametar za <span class="red-text">KRITIČAN</span> kvalitet vazduha</span></td>
     </tr>
 </table>
@@ -44,7 +45,5 @@
 <div id="chartContainer" style="width: 80%; margin: 20px auto;">
     <canvas id="airQualityChart"></canvas>
 </div>
-    <script src="airguard.js">
-    </script>
 </body>
 </html>

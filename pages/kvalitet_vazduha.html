@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="airguard.css">
+    <link rel="stylesheet" href="../style/airguard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../scripts/pitanja.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="icon" href="slike/shield.png" type="image/png">
+    <link rel="icon" href="../images/shield.png" type="image/png">
     <title>AirGuard</title>
 </head>
 <body>
@@ -15,11 +16,11 @@
         <header>
             <nav class="navbar">
                 <div class="shield-icon">
-                    <img src="slike/shield.png" alt="Shield Icon">
+                    <img src="../images/shield.png" alt="Shield Icon">
                     <span id="tekst-ikonice">AirGuard</span>
                 </div>
                 <ul class="navbar-links">
-                    <li><a href="file:///C:/Users/Dule/Desktop/AirGuard/airguard.html">Početna stranica</a></li>
+                    <li><a href="../index.html">Početna stranica</a></li>
                 </ul>
             </nav>
         </header>
@@ -128,46 +129,8 @@
             </div>
             <br>
             <center>
-            <button class="glow-button red small"><a href="file:///C:/Users/Dule/Desktop/AirGuard/kvalitet_vazduha.html">Pokušajte ponovo</a></button>
+            <button class="glow-button red small"><a href="kvalitet_vazduha.html">Pokušajte ponovo</a></button>
             </center>
         </div>
-        
-        <script>
-            // Funkcija kako se prikazuje sledece pitanje
-            function nextQuestion(questionNumber) {
-                // sakrij trenutno pitanje
-                document.getElementById("question-" + questionNumber).classList.add("hidden");
-                
-                // prikazi sledece pitanje
-                if (questionNumber < 5) {
-                    document.getElementById("question-" + (questionNumber + 1)).classList.remove("hidden");
-                } else {
-                    // poslednje pitanje, procesuiraj rezultate
-                    showResults();
-                }
-            }
-        
-            // Funkcija za racunanje i prikaz rezultata
-            function showResults() {
-                let score = 0;
-                let totalQuestions = 5;
-                
-                // proveri rezultate
-                if (document.getElementById("a1").checked) score++;
-                if (document.getElementById("a2").checked) score++;
-                if (document.getElementById("a3").checked) score++;
-                if (document.getElementById("c4").checked) score++;
-                if (document.getElementById("a5").checked) score++;
-                
-                // prikazi rezultate
-                const resultsDiv = document.getElementById("results");
-                resultsDiv.classList.remove("hidden");
-                resultsDiv.innerHTML = `Osvojili ste ${score} od mogućih ${totalQuestions} boda!`;
-
-                // prikazi objasnjenja rezultata
-        document.getElementById("answer-explanations").classList.remove("hidden");
-            }
-        </script>
-
 </body>
 </html>
